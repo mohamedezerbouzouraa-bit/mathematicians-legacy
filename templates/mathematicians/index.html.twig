@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grands Mathématiciens de l'Histoire</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/mathematicians.css') }}">
+</head>
+
+<body>
+
+<header>
+    <div class="header-tag">Héritage Mathématique</div>
+
+    <h1>Les Grands Mathématiciens</h1>
+
+    <p>Voyagez à travers les siècles et découvrez les esprits qui ont façonné les mathématiques modernes.</p>
+    <a href="{{ path('app_map') }}" class="card-btn">📍 Explorer la Carte</a>
+
+    <a href="/chatbot" class="card-btn" style="margin-top:20px; display:inline-block;">
+        💬 Accéder au Chatbot IA
+    </a>
+</header>
+
+<div class="grid-container" id="grid"></div>
+
+<footer>
+    <p>« Les mathématiques sont la reine des sciences et l'arithmétique est la reine des mathématiques. » — Carl Friedrich Gauss</p>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+    <div class="modal" id="modal">
+        <button class="modal-close" onclick="closeModal(null, true)">✕</button>
+
+        <div class="modal-header" id="modal-header"></div>
+
+        <div class="modal-tabs" id="modal-tabs"></div>
+
+        <div class="modal-content" id="modal-content"></div>
+    </div>
+</div>
+<script src="{{ asset('js/mathematicians.js') }}"></script>
+
+</body>
+</html>
