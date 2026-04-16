@@ -1,0 +1,124 @@
+/* ─────────────────────────────────────────────────────────────
+   SECTION CHATBOT - STYLE ALIGNÉ SUR L'HÉRITAGE MATHÉMATIQUE
+   ───────────────────────────────────────────────────────────── */
+
+/* Conteneur principal de la page */
+.chatbot-page {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* Titre H1 spécifique au Chatbot (Style identique à l'accueil) */
+
+
+/* Sous-titre en italique */
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   INTERFACE DE DISCUSSION (CHAT BOX)
+   ───────────────────────────────────────────────────────────── */
+
+.chat-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Zone des messages avec défilement */
+.messages {
+    height: 480px;
+    overflow-y: auto;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(10, 15, 25, 0.3); /* Léger fond pour la zone de texte */
+}
+
+/* Style de base d'une bulle de message */
+.message {
+    padding: 12px 16px;
+    border-radius: 14px;
+    max-width: 75%;
+    font-family: 'Crimson Text', serif;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+/* Message de l'UTILISATEUR (Aligné à Droite) */
+.user {
+    align-self: flex-end;
+    background: rgba(45, 212, 191, 0.15);
+    border: 1px solid var(--border-glow);
+    color: var(--text-primary);
+    border-bottom-right-radius: 2px;
+}
+
+/* Message du BOT (Aligné à Gauche) */
+.bot {
+    align-self: flex-start;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: var(--text-primary);
+    border-bottom-left-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ZONE DE SAISIE (INPUT AREA)
+   ───────────────────────────────────────────────────────────── */
+
+.input-area {
+    display: flex;
+    gap: 12px;
+    padding: 20px;
+    border-top: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.input-area input {
+    flex: 1;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Crimson Text', serif;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.input-area input:focus {
+    border-color: var(--accent-teal);
+}
+
+.input-area button {
+    padding: 0 25px;
+    border-radius: 10px;
+    border: 1px solid var(--border-glow);
+    background: rgba(45, 212, 191, 0.1);
+    color: var(--text-primary);
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-area button:hover {
+    background: var(--accent-teal);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px var(--border-glow);
+}
