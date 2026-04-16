@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte des Origines — Grands Mathématiciens</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/mathematicians.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/map.css') }}">
+</head>
+<body>
+<a href="{{ path('mathematicians') }}" class="back-btn">← Retour</a>
+<!-- ── HEADER ── -->
+<header>
+    <a href="{{ path('mathematicians') }}" class="back-btn">← Retour</a>
+    <div class="header-tag">Origines Géographiques</div>
+    <h1>Carte des Mathématiciens</h1>
+    <p>Découvrez d'où venaient les esprits qui ont bâti les mathématiques modernes.</p>
+</header>
+
+<!-- ── STATS BAR ── -->
+<div class="stats-bar">
+    <div class="stat-item">
+        <span class="stat-number" id="stat-total">5</span>
+        <span class="stat-label">Mathématiciens</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+        <span class="stat-number" id="stat-countries">5</span>
+        <span class="stat-label">Pays représentés</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+        <span class="stat-number">~1100</span>
+        <span class="stat-label">Années d'histoire</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Continents</span>
+    </div>
+</div>
+
+<!-- ── MAP CONTAINER ── -->
+<div class="map-wrapper">
+    <div class="map-instructions">
+        <span class="pulse-dot"></span>
+        Cliquez sur un repère pour découvrir le mathématicien
+    </div>
+
+    <div class="map-container" id="map-container">
+        <!-- SVG World Map -->
+        <svg id="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+
+            <!-- Ocean background -->
+            <rect width="1000" height="500" fill="#0a1628"/>
+
+            <!-- Grid lines (meridians & parallels) -->
+            <g stroke="#1a2744" stroke-width="0.4" opacity="0.6">
+                <line x1="0" y1="125" x2="1000" y2="125"/>
+                <line x1="0" y1="250" x2="1000" y2="250"/>
+                <line x1="0" y1="375" x2="1000" y2="375"/>
+                <line x1="250" y1="0" x2="250" y2="500"/>
+                <line x1="500" y1="0" x2="500" y2="500"/>
+                <line x1="750" y1="0" x2="750" y2="500"/>
+            </g>
+
+            <!-- ── CONTINENTS (simplified SVG paths) ── -->
+
+            <!-- EUROPE -->
+            <g class="continent" id="cont-europe">
+                <!-- Iberian Peninsula -->
+                <path d="M 430 155 L 420 148 L 415 155 L 418 165 L 430 168 L 438 162 Z" fill="#1e3a5f"/>
+                <!-- France -->
+                <path d="M 438 148 L 430 145 L 425 148 L 430 155 L 438 162 L 448 158 L 452 150 L 445 145 Z" fill="#1e3a5f"/>
+                <!-- British Isles -->
+                <path d="M 430 130 L 425 125 L 422 132 L 428 138 L 435 135 Z" fill="#1e3a5f"/>
+                <path d="M 438 125 L 433 120 L 430 130 L 435 135 L 442 128 Z" fill="#1e3a5f"/>
+                <!-- Benelux + Germany + Central Europe -->
+                <path d="M 448 135 L 442 128 L 438 130 L 438 148 L 445 145 L 452 150 L 462 148 L 468 140 L 465 132 L 458 128 Z" fill="#1e3a5f"/>
+                <!-- Italy -->
+                <path d="M 458 158 L 452 150 L 448 158 L 455 175 L 462 178 L 465 168 Z" fill="#1e3a5f"/>
+                <!-- Scandinavia -->
+                <path d="M 458 108 L 452 100 L 448 108 L 450 120 L 458 125 L 465 118 Z" fill="#1e3a5f"/>
+                <path d="M 465 105 L 460 98 L 458 108 L 465 118 L 472 112 Z" fill="#1e3a5f"/>
+                <!-- Poland + Baltics -->
+                <path d="M 468 128 L 462 122 L 458 128 L 462 138 L 468 140 L 475 135 L 475 128 Z" fill="#1e3a5f"/>
+                <!-- Balkans -->
+                <path d="M 468 155 L 462 148 L 458 158 L 465 168 L 472 165 L 478 158 Z" fill="#1e3a5f"/>
+            </g>
+
+            <!-- RUSSIA / Eastern Europe -->
+            <g class="continent">
+                <path d="M 475 128 L 468 128 L 468 140 L 475 145 L 485 142 L 495 138 L 510 132 L 525 128 L 540 122 L 555 118 L 565 115 L 575 112 L 580 108 L 575 102 L 560 100 L 540 102 L 520 105 L 502 108 L 488 115 Z" fill="#1a3050"/>
+                <path d="M 580 108 L 575 112 L 590 118 L 610 122 L 630 120 L 645 118 L 655 115 L 658 110 L 645 105 L 625 105 L 605 108 Z" fill="#1a3050"/>
+                <path d="M 658 110 L 655 115 L 665 118 L 675 115 L 680 110 L 675 105 L 665 105 Z" fill="#1a3050"/>
+            </g>
+
+            <!-- MIDDLE EAST -->
+            <g class="continent" id="cont-middleeast">
+                <path d="M 545 178 L 535 172 L 528 178 L 530 192 L 540 198 L 552 195 L 558 185 Z" fill="#1e3a5f"/>
+                <path d="M 558 185 L 552 195 L 558 205 L 568 208 L 575 200 L 572 188 Z" fill="#1e3a5f"/>
+                <path d="M 575 175 L 565 172 L 558 178 L 558 185 L 572 188 L 580 182 Z" fill="#1e3a5f"/>
+            </g>
+
+            <!-- CENTRAL ASIA / Persia -->
+            <g class="continent">
+                <path d="M 580 155 L 572 150 L 565 155 L 565 172 L 575 175 L 585 170 L 592 162 L 588 155 Z" fill="#1a3050"/>
+                <path d="M 605 145 L 595 142 L 588 148 L 588 155 L 595 160 L 605 158 L 612 150 Z" fill="#1a3050"/>
+                <path d="M 630 140 L 620 138 L 612 142 L 612 150 L 622 155 L 632 150 L 638 145 Z" fill="#1a3050"/>
+            </g>
+
+            <!-- INDIA -->
+            <g class="continent" id="cont-india">
+                <path d="M 648 175 L 638 170 L 632 178 L 635 195 L 645 208 L 655 210 L 662 200 L 660 185 Z" fill="#1e3a5f"/>
+            </g>
+
+            <!-- AFRICA -->
+            <g class="continent">
+                <path d="M 468 178 L 460 172 L 455 180 L 458 198 L 465 212 L 475 222 L 485 225 L 492 218 L 495 205 L 492 190 L 485 180 Z" fill="#1a3050"/>
+                <path d="M 485 225 L 475 222 L 478 238 L 485 248 L 492 245 L 498 235 L 495 225 Z" fill="#1a3050"/>
+                <!-- North Africa -->
+                <path d="M 452 165 L 445 162 L 440 172 L 445 182 L 455 185 L 462 180 L 465 170 Z" fill="#1a3050"/>
+                <path d="M 468 168 L 462 165 L 462 180 L 468 185 L 475 180 L 478 172 L 472 165 Z" fill="#1a3050"/>
+                <path d="M 478 165 L 472 165 L 478 172 L 485 175 L 490 168 L 488 162 L 482 160 Z" fill="#1a3050"/>
+                <path d="M 505 162 L 498 160 L 492 165 L 492 175 L 500 180 L 508 175 L 510 168 Z" fill="#1a3050"/>
+                <path d="M 520 162 L 512 160 L 508 165 L 510 175 L 518 178 L 525 172 L 525 165 Z" fill="#1a3050"/>
+                <path d="M 535 162 L 528 160 L 525 165 L 525 175 L 532 178 L 538 172 L 538 165 Z" fill="#1a3050"/>
+            </g>
+
+            <!-- ASIA EAST -->
+            <g class="continent">
+                <!-- China -->
+                <path d="M 698 155 L 688 148 L 678 152 L 672 162 L 675 175 L 685 180 L 698 178 L 708 170 L 710 160 Z" fill="#1a3050"/>
+                <!-- Japan -->
+                <path d="M 730 152 L 725 148 L 722 155 L 725 162 L 732 162 L 735 155 Z" fill="#1a3050"/>
+                <!-- Korea -->
+                <path d="M 718 158 L 713 155 L 710 162 L 713 168 L 720 168 L 722 162 Z" fill="#1a3050"/>
+                <!-- SE Asia -->
+                <path d="M 700 185 L 692 182 L 688 192 L 692 202 L 700 205 L 708 198 L 708 188 Z" fill="#1a3050"/>
+                <!-- Indonesia rough -->
+                <path d="M 710 222 L 702 218 L 698 225 L 705 232 L 715 230 Z" fill="#1a3050"/>
+                <path d="M 725 220 L 718 218 L 715 225 L 722 230 L 730 228 L 732 222 Z" fill="#1a3050"/>
+            </g>
+
+            <!-- NORTH AMERICA -->
+            <g class="continent">
+                <path d="M 178 108 L 168 102 L 158 108 L 155 122 L 162 132 L 172 135 L 182 130 L 185 118 Z" fill="#1a3050"/>
+                <path d="M 210 118 L 200 112 L 192 118 L 190 132 L 198 142 L 210 145 L 220 138 L 222 128 Z" fill="#1a3050"/>
+                <path d="M 238 128 L 228 122 L 220 128 L 220 145 L 230 152 L 242 150 L 248 140 L 245 130 Z" fill="#1a3050"/>
+                <path d="M 260 138 L 250 132 L 244 140 L 245 155 L 255 162 L 265 160 L 270 150 L 268 140 Z" fill="#1a3050"/>
+                <!-- Mexico -->
+                <path d="M 218 168 L 210 162 L 205 170 L 208 182 L 218 185 L 226 178 L 225 170 Z" fill="#1a3050"/>
+            </g>
+
+            <!-- SOUTH AMERICA -->
+            <g class="continent">
+                <path d="M 248 215 L 240 208 L 232 215 L 232 232 L 240 245 L 252 250 L 262 242 L 265 228 L 260 218 Z" fill="#1a3050"/>
+                <path d="M 262 248 L 252 245 L 248 258 L 252 272 L 262 278 L 272 270 L 272 258 Z" fill="#1a3050"/>
+                <path d="M 268 278 L 260 275 L 258 288 L 262 298 L 270 300 L 275 292 L 272 282 Z" fill="#1a3050"/>
+            </g>
+
+            <!-- AUSTRALIA -->
+            <g class="continent">
+                <path d="M 762 295 L 752 288 L 745 295 L 745 315 L 755 325 L 768 325 L 778 315 L 778 300 L 770 292 Z" fill="#1a3050"/>
+                <!-- New Zealand rough -->
+                <path d="M 792 320 L 788 315 L 785 322 L 788 330 L 794 330 L 796 324 Z" fill="#1a3050"/>
+            </g>
+
+            <!-- ── MATHEMATICIAN MARKERS ── -->
+
+            <!-- Ramanujan — India (Tamil Nadu ~650,200) -->
+            <g class="marker-group" data-id="ramanujan" transform="translate(650, 198)">
+                <circle class="marker-ring" r="18" fill="none" stroke="#c084fc" stroke-width="1" opacity="0.4"/>
+                <circle class="marker-pulse" r="12" fill="#c084fc" opacity="0.15"/>
+                <circle class="marker-dot" r="7" fill="#c084fc" stroke="#0a1628" stroke-width="2"/>
+                <text class="marker-label" x="0" y="-22" text-anchor="middle" fill="#c084fc" font-family="Cinzel,serif" font-size="9" letter-spacing="1">RAMANUJAN</text>
+                <text class="marker-sub" x="0" y="-12" text-anchor="middle" fill="#c084fc" font-size="8" opacity="0.7" font-family="Cinzel,serif">INDE · 1887</text>
+            </g>
+
+            <!-- Gauss — Germany (~462, 135) -->
+            <g class="marker-group" data-id="gauss" transform="translate(462, 132)">
+                <circle class="marker-ring" r="18" fill="none" stroke="#86efac" stroke-width="1" opacity="0.4"/>
+                <circle class="marker-pulse" r="12" fill="#86efac" opacity="0.15"/>
+                <circle class="marker-dot" r="7" fill="#86efac" stroke="#0a1628" stroke-width="2"/>
+                <text class="marker-label" x="0" y="-22" text-anchor="middle" fill="#86efac" font-family="Cinzel,serif" font-size="9" letter-spacing="1">GAUSS</text>
+                <text class="marker-sub" x="0" y="-12" text-anchor="middle" fill="#86efac" font-size="8" opacity="0.7" font-family="Cinzel,serif">ALLEMAGNE · 1777</text>
+            </g>
+
+            <!-- Euler — Switzerland (~450, 148) -->
+            <g class="marker-group" data-id="euler" transform="translate(448, 152)">
+                <circle class="marker-ring" r="18" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.4"/>
+                <circle class="marker-pulse" r="12" fill="#38bdf8" opacity="0.15"/>
+                <circle class="marker-dot" r="7" fill="#38bdf8" stroke="#0a1628" stroke-width="2"/>
+                <text class="marker-label" x="30" y="4" text-anchor="start" fill="#38bdf8" font-family="Cinzel,serif" font-size="9" letter-spacing="1">EULER</text>
+                <text class="marker-sub" x="30" y="13" text-anchor="start" fill="#38bdf8" font-size="8" opacity="0.7" font-family="Cinzel,serif">SUISSE · 1707</text>
+            </g>
+
+            <!-- Wilson — England (~436, 128) -->
+            <g class="marker-group" data-id="wilson" transform="translate(434, 128)">
+                <circle class="marker-ring" r="18" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.4"/>
+                <circle class="marker-pulse" r="12" fill="#fbbf24" opacity="0.15"/>
+                <circle class="marker-dot" r="7" fill="#fbbf24" stroke="#0a1628" stroke-width="2"/>
+                <text class="marker-label" x="-30" y="4" text-anchor="end" fill="#fbbf24" font-family="Cinzel,serif" font-size="9" letter-spacing="1">WILSON</text>
+                <text class="marker-sub" x="-30" y="13" text-anchor="end" fill="#fbbf24" font-size="8" opacity="0.7" font-family="Cinzel,serif">ANGLETERRE · 1741</text>
+            </g>
+
+            <!-- Laplace — France (~438, 150) -->
+            <g class="marker-group" data-id="laplace" transform="translate(440, 155)">
+                <circle class="marker-ring" r="18" fill="none" stroke="#818cf8" stroke-width="1" opacity="0.4"/>
+                <circle class="marker-pulse" r="12" fill="#818cf8" opacity="0.15"/>
+                <circle class="marker-dot" r="7" fill="#818cf8" stroke="#0a1628" stroke-width="2"/>
+                <text class="marker-label" x="-30" y="20" text-anchor="end" fill="#818cf8" font-family="Cinzel,serif" font-size="9" letter-spacing="1">LAPLACE</text>
+                <text class="marker-sub" x="-30" y="29" text-anchor="end" fill="#818cf8" font-size="8" opacity="0.7" font-family="Cinzel,serif">FRANCE · 1749</text>
+            </g>
+
+            <!-- Equator line -->
+            <line x1="0" y1="252" x2="1000" y2="252" stroke="#2dd4bf" stroke-width="0.5" stroke-dasharray="4,6" opacity="0.3"/>
+            <text x="8" y="249" fill="#2dd4bf" font-size="7" opacity="0.5" font-family="Cinzel,serif">ÉQUATEUR</text>
+
+            <!-- Tropic lines -->
+            <line x1="0" y1="195" x2="1000" y2="195" stroke="#30363d" stroke-width="0.4" stroke-dasharray="2,8" opacity="0.5"/>
+            <line x1="0" y1="308" x2="1000" y2="308" stroke="#30363d" stroke-width="0.4" stroke-dasharray="2,8" opacity="0.5"/>
+
+        </svg>
+
+        <!-- Zoom controls -->
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoom-in" title="Zoom avant">+</button>
+            <button class="zoom-btn" id="zoom-out" title="Zoom arrière">−</button>
+            <button class="zoom-btn" id="zoom-reset" title="Réinitialiser" style="font-size:11px;">⌂</button>
+        </div>
+    </div>
+</div>
+
+<!-- ── MATHEMATICIAN LIST (below map) ── -->
+<section class="origin-list-section">
+    <div class="section-title">
+        <span class="section-line"></span>
+        Fiches par pays
+        <span class="section-line"></span>
+    </div>
+
+    <div class="origin-grid" id="origin-grid"></div>
+</section>
+
+<!-- ── DETAIL PANEL (side popup) ── -->
+<div class="detail-overlay" id="detail-overlay">
+    <div class="detail-panel" id="detail-panel">
+        <button class="detail-close" id="detail-close">✕</button>
+        <div id="detail-content"></div>
+    </div>
+</div>
+
+<footer>
+    <p>« Les mathématiques n'ont pas de frontières — seulement des esprits brillants dispersés à travers le monde. »</p>
+</footer>
+
+<script src="{{ asset('js/map.js') }}"></script>
+
+</body>
+</html>
