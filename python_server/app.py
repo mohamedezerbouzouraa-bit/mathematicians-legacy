@@ -22,7 +22,6 @@ model = genai.GenerativeModel(
     model_name=MODEL_NAME,
     system_instruction=SYSTEM_PROMPT
 )
-
 @app.route("/chat", methods=["POST"])
 def chat():
     data = request.json
