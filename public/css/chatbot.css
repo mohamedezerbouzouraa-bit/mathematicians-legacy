@@ -1,8 +1,4 @@
-/* ─────────────────────────────────────────────────────────────
-   SECTION CHATBOT - STYLE ALIGNÉ SUR L'HÉRITAGE MATHÉMATIQUE
-   ───────────────────────────────────────────────────────────── */
 
-/* Conteneur principal de la page */
 .chatbot-page {
     position: relative;
     z-index: 10;
@@ -12,20 +8,14 @@
     text-align: center;
 }
 
-/* Titre H1 spécifique au Chatbot (Style identique à l'accueil) */
 
 
-/* Sous-titre en italique */
 .subtitle {
     font-size: 1.1rem;
     color: var(--text-secondary);
     font-style: italic;
     margin-bottom: 30px;
 }
-
-/* ─────────────────────────────────────────────────────────────
-   INTERFACE DE DISCUSSION (CHAT BOX)
-   ───────────────────────────────────────────────────────────── */
 
 .chat-container {
     background: var(--bg-card);
@@ -37,7 +27,6 @@
     flex-direction: column;
 }
 
-/* Zone des messages avec défilement */
 .messages {
     height: 480px;
     overflow-y: auto;
@@ -45,10 +34,9 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    background: rgba(10, 15, 25, 0.3); /* Léger fond pour la zone de texte */
+    background: rgba(10, 15, 25, 0.3);
 }
 
-/* Style de base d'une bulle de message */
 .message {
     padding: 12px 16px;
     border-radius: 14px;
@@ -59,7 +47,6 @@
     word-wrap: break-word;
 }
 
-/* Message de l'UTILISATEUR (Aligné à Droite) */
 .user {
     align-self: flex-end;
     background: rgba(45, 212, 191, 0.15);
@@ -68,7 +55,6 @@
     border-bottom-right-radius: 2px;
 }
 
-/* Message du BOT (Aligné à Gauche) */
 .bot {
     align-self: flex-start;
     background: rgba(56, 189, 248, 0.12);
@@ -77,9 +63,6 @@
     border-bottom-left-radius: 2px;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   ZONE DE SAISIE (INPUT AREA)
-   ───────────────────────────────────────────────────────────── */
 
 .input-area {
     display: flex;
