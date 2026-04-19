@@ -215,7 +215,6 @@ mathematicians.forEach(m => {
         </div>`;
     grid.appendChild(card);
 });
-
 function openModal(id) {
     const m = mathematicians.find(x => x.id === id);
     if (!m) return;
