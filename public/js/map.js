@@ -80,7 +80,6 @@ const mathematicians = [
         continent: 'Europe'
     }
 ];
-
 const originGrid = document.getElementById('origin-grid');
 mathematicians.forEach((m, i) => {
     const card = document.createElement('div');
