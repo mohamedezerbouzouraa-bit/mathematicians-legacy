@@ -40,7 +40,6 @@ async function sendMessage() {
         addMessage("Désolé, impossible de contacter le serveur IA. Vérifiez que Flask est lancé sur le port 5000.", "bot");
     }
 }
-
 function addMessage(text, sender, id = null) {
     const messagesContainer = document.getElementById("messages");
     const msgDiv = document.createElement("div");
