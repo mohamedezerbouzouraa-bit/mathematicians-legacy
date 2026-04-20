@@ -5,7 +5,6 @@ document.getElementById('prompt').addEventListener('keypress', function (e) {
         sendMessage();
     }
 });
-
 async function sendMessage() {
     const input = document.getElementById("prompt");
     const text = input.value.trim();
