@@ -1,6 +1,5 @@
 const mathematicians = [
-    {
-        id: 'ramanujan',
+    {   id: 'ramanujan',
         name: 'Srinivasa Ramanujan',
         era: 'Époque moderne · 1887–1920',
         tagline: 'Le génie autodidacte de Madras',
