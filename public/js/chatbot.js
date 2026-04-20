@@ -8,7 +8,6 @@ document.getElementById('prompt').addEventListener('keypress', function (e) {
 async function sendMessage() {
     const input = document.getElementById("prompt");
     const text = input.value.trim();
-
     if (!text) return;
 
     addMessage(text, "user");
