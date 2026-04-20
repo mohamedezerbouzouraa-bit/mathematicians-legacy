@@ -188,8 +188,7 @@ const mathematicians = [
         legacy: 'Fondement de la relativité d\'Einstein.',
         quote: '« Si je pouvais m\'éveiller dans 500 ans... »',
         achievements: ['Géométrie riemannienne', 'Hypothèse de Riemann']
-    }
-];
+    }];
 
 const grid = document.getElementById('grid');
 mathematicians.forEach(m => {
