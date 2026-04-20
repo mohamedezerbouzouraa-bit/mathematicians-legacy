@@ -10,7 +10,6 @@
 </head>
 <body>
 <a href="{{ path('mathematicians') }}" class="back-btn">← Retour</a>
-<!-- ── HEADER ── -->
 <header>
     <a href="{{ path('mathematicians') }}" class="back-btn">← Retour</a>
     <div class="header-tag">Origines Géographiques</div>
@@ -18,7 +17,6 @@
     <p>Découvrez d'où venaient les esprits qui ont bâti les mathématiques modernes.</p>
 </header>
 
-<!-- ── STATS BAR ── -->
 <div class="stats-bar">
     <div class="stat-item">
         <span class="stat-number" id="stat-total">5</span>
@@ -49,10 +47,8 @@
     </div>
 
     <div class="map-container" id="map-container">
-        <!-- SVG World Map -->
         <svg id="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
 
-            <!-- Ocean background -->
             <rect width="1000" height="500" fill="#0a1628"/>
 
             <!-- Grid lines (meridians & parallels) -->
@@ -67,7 +63,6 @@
 
             <!-- ── CONTINENTS (simplified SVG paths) ── -->
 
-            <!-- EUROPE -->
             <g class="continent" id="cont-europe">
                 <!-- Iberian Peninsula -->
                 <path d="M 430 155 L 420 148 L 415 155 L 418 165 L 430 168 L 438 162 Z" fill="#1e3a5f"/>
