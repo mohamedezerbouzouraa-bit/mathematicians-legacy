@@ -8,7 +8,6 @@ app = Flask(__name__)
 CORS(app)
 os.environ["GOOGLE_API_KEY"] = "xxxxxxxxxxxxxx"
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
-
 MODEL_NAME = "gemini-1.5-flash-latest"
 SYSTEM_PROMPT = """
 Tu es l'Assistant Mathématique IA du site "Héritage Mathématique".
