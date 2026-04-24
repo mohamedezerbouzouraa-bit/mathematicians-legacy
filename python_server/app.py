@@ -14,7 +14,6 @@ Tu es l'Assistant Mathématique IA du site "Héritage Mathématique".
 Ton rôle est d'aider les utilisateurs à comprendre les concepts mathématiques,
 les théorèmes (Gauss, Newton, Euler, etc.) et de résoudre des problèmes.
 """
-
 model = genai.GenerativeModel(
     model_name=MODEL_NAME,
     system_instruction=SYSTEM_PROMPT
